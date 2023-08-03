@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="nl">
+    <head>
+        <meta charset="utf-8">
+        <title>Contactformulier</title>
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+        <script type="text/javascript">
+
+        $(document).ready(function() 
+            {
+                $("#eigenadres").hide();
+                $("#leveradres").hide();
+
+                $("#ajax").click(function(){
+                var ajax = document.getElementById("ajax").checked;
+                var lemelerveld = document.getElementById("lemelerveld").checked;
+                var verberg=document.getElementById("verberg").checked;
+                if(ajax === false & lemelerveld===false)
+                    {
+                        $("#eigenadres").hide();
+                        $("#leveradres").hide();
+                        document.getElementById("verberg").checked=true;
+                    }
+                else
+                    {
+                        $("#eigenadres").show();
+                    }
+                });       
+                $("#lemelerveld").click(function(){
+                var ajax = document.getElementById("ajax").checked;
+                var lemelerveld = document.getElementById("lemelerveld").checked;   
+                if(lemelerveld === false & ajax===false)
+                    {
+                        $("#eigenadres").hide();
+                        $("#leveradres").hide();
+                        document.getElementById("verberg").checked=true;
+           
+                    }
+                else
+                    {
+                        $("#eigenadres").show();
+                    }
+
+                });
+                $("#verberg").change(function()
+                    {
+                        $("#leveradres").hide();
+                    });
+                $("#toon").change(function()
+                    {
+                        $("#leveradres").show();
+                    });
+
+                $("#knop").click(function(){
+                var ajax = document.getElementById("ajax").checked;
+                var lemelerveld = document.getElementById("lemelerveld").checked;    
+                if(lemelerveld === true & ajax===false){window,alert("Je hebt het v.v. Lemelerveld-shirt besteld.")} 
+                if(lemelerveld === false & ajax===true){window,alert("Je hebt het Ajax-shirt besteld.")}  
+                if(lemelerveld === true & ajax===true){window,alert("Je hebt het v.v. Lemelerveldshirt en het Ajax-shirt besteld.")}    
+                });
+            });
+        
+        </script>
+    </head>
+
+
+    <body class="content">
+        <h1>Shirt verkoop</h1>
+        <div id="een">
+            <img src="afbeeldingen/Ajax-shirt.jpg" alt="Ajax shirt">
+            <p>
+                <h3>Ajax shirt</h3>
+                OMSCHRIJVING:<br>
+            Het Beam Shirt is een klassiek voetbalshirt. Het is gemaakt van 100% hoogwaardig polyester.<br>
+            Op de schouders en in de zij bevinden zich ventilerende mesh-panels.<br> 
+            Het shirt heeft een ronde hals van elastisch rib-materiaal. Het hummel logo op de borst is gesublimeerd.<br>
+            </p>
+            <input id="ajax" type="checkbox" name="checkbox">Bestellen
+        </div>
+
+        <div id="twee">
+            <img src="afbeeldingen/Lemelerveld-shirt.jpg" alt="Lemelerveld shirt">
+            <p>
+                <h3>v.v. Lemelerveld</h3>
+                OMSCHRIJVING:<br>
+                Het Aarhus Shirt van hummel is gemaakt van 100% polyester met ClimaTec finish.<br> 
+                Dit materiaal is speciaal ontwikkeld om zweet optimaal af te voeren en de huid droog te houden.<br> 
+                Het sportshirt heeft een wat langere pasvorm. De ronde hals bevat elastisch rib-materiaal.<br> 
+                In de zij bevat het shirt asymmetrische contrastpanels, op de schouders geprinte chevrons.<br> 
+                Op de borst is het hummel logo geprint.<br>
+            </p>
+            <input id="lemelerveld" type="checkbox" name="checkbox">Bestellen
+        </div>
+
+        <div class="row">
+        <div class="-col-2">  
+        <form id="eigenadres" method="post" action="bewaarInformatie.php">
+
+            <table width="600" border="0">
+                <tbody>
+                <tr><td><b>Uw adres:</b></td></tr>    
+                <tr>
+                    <td width="200"><b>Uw achternaam</b></td>
+                    <td width="400"><input type="text"></td>
+                </tr>
+            
+                <tr>
+                    <td><b>Uw voornaam</b></td>
+                    <td><input type="text" id="voor"></td>
+                </tr>
+
+                <tr>
+                    <td><b>Uw straatnaam</b></td>
+                    <td><input type="text" name="straatnaam"></td>
+                </tr>
+
+                <tr>
+                    <td><b>Uw huisnummer</b></td>
+                    <td><input type="text" name="huisnummer"></td>
+                </tr>
+
+                <tr>
+                    <td><b>Uw woonplaats</b></td>
+                    <td><input type="text" name="woonplaats"></td>
+                </tr>
+
+                <tr>
+                    <td><b>Uw e-mailadres</b></td>
+                    <td><input type="email" name="emailadres"></td>
+                </tr>
+
+                <tr>
+                    <td><b>Leveradres</b></td>
+                    <td>
+                        <input type="radio" name="adres" id="verberg" checked="checked">zelfde adres
+                        <input type="radio" name="adres" id="toon">anders, nl:
+                    </td>
+                </tr>
+                <td>&nbsp;</td>
+                <td><button id="knop" type="submit" name="verzendknop"><strong>Verzend</strong></button></td>
+                </tbody>
+            </table>
+        </form>
+        </div>
+        
+        <div class="-col-2">
+        <form id="leveradres" method="post" action="bewaarInformatie.php">
+
+            <table width="600" border="0">
+                <tbody>
+                <tr>
+                    <td>Leveradres:</td>
+                </tr> 
+                <tr>
+                    <td><b>Achternaam</b></td>
+                    <td><input type="text" name="achternaam"></td>
+                </tr>
+                
+                <tr>
+                    <td><b>Voornaam</b></td>
+                    <td><input type="text" name="voornaam"></td>
+                </tr>
+    
+                <tr>
+                    <td><b>Straatnaam</b></td>
+                    <td><input type="text" name="straatnaam"></td>
+                </tr>
+    
+                <tr>
+                    <td><b>Huisnummer</b></td>
+                    <td><input type="text" name="huisnummer"></td>
+                </tr>
+    
+    
+                <tr>
+                    <td><b>Woonplaats</b></td>
+                    <td><input type="text" name="woonplaats"></td>
+                </tr>    
+                </tbody>
+            </table>
+        </form>
+        </div>
+        </div>
+
+        <noscript>
+            Om deze website optimaal te gebruiken is het noodzakelijk om JavaScript te activeren.
+        </noscript>
+    </body>
+</html>

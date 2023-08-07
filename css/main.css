@@ -1,6 +1,8 @@
 .content
 {
     background-color: aquamarine;
+    font-family: 'Montserrat', sans-serif;
+    font-size:large;
 }
 
 
@@ -42,6 +44,6 @@ img
     {
         width: 180px;
         float:left;
-        padding: 5px 50px;
+        padding: 20px 50px;
     }
     
